@@ -12,6 +12,7 @@ Pre-requisites for running the scripts:
 4. Some kubernetes background would help if the script doesn't work for you as intended!
 5. Install the components - docker, k8s, and CSI Driver in that order
 6. All this is valid for the Isilon CSI Driver 1.0 version
+
 There are three scripts provided here:
 1. docker_install.sh
 This script installs latest version of docker on the provided Linux host
@@ -23,3 +24,18 @@ This script will clone all the necessary configuration files for kubernetes/dock
 Note - there's no uninstall of the docker and kubernetes scripts. The Isilon CSI Driver installation script (install.isilon) is called upon by the install_Isilon_CSI_Driver_1.0.sh script. The driver can be uninstalled using the provided uninstall.isilon script.
 
 In essense, these three scripts will prepare your environment to get the Isilon CSI driver installed. I install the driver for you in the end as a convenience so it's all done together.
+
+Procedure:
+--------------
+Login as root to your CentOS/RHEL 7.7 VM host
+cd /root
+git clone https://github.com/acd13/IsilonCSIDriver_Env_Installation.git
+cd IsilonCSIDriver_Env_Installation
+cp *.sh /root/
+./docker_install.sh (it's interactive script, complete it to get docker working)
+./install_k8s_1.14.sh (it's interactive script, compleete it to get kubernetes master node working at 1.14.1)
+./install_Isilon_CSI_Driver_1.0.sh (it's interactive script, complete it to get the driver working)
+
+Follow the official DellEMC Isilon CSI Driver 1.0 documentation at: https://github.com/dell/csi-isilon to download the offical installation guide.
+
+
